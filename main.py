@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
-from PyQt5.QtCore import Qt, QTimer, QThread, pyqtSignal
+from PyQt5.QtCore import Qt, QTimer, QSize
 from PyQt5.QtGui import QFont
+
 import pyautogui
 
 class CursorControl(QWidget):
@@ -9,18 +10,21 @@ class CursorControl(QWidget):
         super().__init__()
         self.speed = 5  # Velocidad de movimiento inicial
         self.max_speed = 165  # Velocidad máxima permitida
+        self.dark_mode = True  # Modo oscuro por defecto
         self.initUI()
 
     def initUI(self):
         self.setWindowTitle('Automatic Cursor')
         self.setGeometry(100, 100, 500, 200)
 
+        # Aplicar estilo de fondo oscuro por defecto
+        self.setStyleSheet("background-color: #222; color: #fff;")
+
         # Etiqueta para mostrar estado de modo de cursor y coordenadas del cursor
         self.status_label = QLabel(self)
         self.status_label.setText('Modo Cursor Automático: Inactivo\nCoordenadas del cursor: (0, 0)')
         self.status_label.setAlignment(Qt.AlignCenter)
         self.status_label.setGeometry(10, 10, 480, 50)
-        self.status_label.setStyleSheet("color: #333; background-color: #eee")
         self.status_label.setFont(QFont('Arial', 10))
 
         # Etiqueta para mostrar velocidad del cursor
@@ -28,7 +32,6 @@ class CursorControl(QWidget):
         self.speed_label.setText('Velocidad del cursor: {}'.format(self.speed))
         self.speed_label.setAlignment(Qt.AlignCenter)
         self.speed_label.setGeometry(10, 70, 480, 50)
-        self.speed_label.setStyleSheet("color: #333; background-color: #eee")
         self.speed_label.setFont(QFont('Arial', 10))
 
         self.cursorModeActive = False
@@ -45,6 +48,8 @@ class CursorControl(QWidget):
         elif event.key() == Qt.Key_Down:
             self.speed = max(1, self.speed - 1)  # Disminuir velocidad con límite inferior de 1
             self.updateSpeedLabel()
+        elif event.key() == Qt.Key_T and event.modifiers() == Qt.ControlModifier:
+            self.toggleTheme()  # Cambiar entre modo oscuro y claro al presionar Ctrl + T
 
     def toggleCursorMode(self):
         if not self.cursorModeActive:
@@ -79,6 +84,15 @@ class CursorControl(QWidget):
 
     def updateSpeedLabel(self):
         self.speed_label.setText('Velocidad del cursor: {}'.format(self.speed))
+
+    def toggleTheme(self):
+        # Cambiar entre modo oscuro y claro
+        if self.dark_mode:
+            self.setStyleSheet("background-color: #fff; color: #000;")
+            self.dark_mode = False
+        else:
+            self.setStyleSheet("background-color: #222; color: #fff;")
+            self.dark_mode = True
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
