@@ -1,52 +1,31 @@
 # Automatic Cursor
 
-Este es un script de Python que crea una ventana que permite activar/desactivar un modo de movimiento automático del cursor, inspirado en el protector de pantalla del logo de DVD.
+Este proyecto consiste en una aplicación de escritorio desarrollada en Python utilizando PyQt5 que permite activar un modo automático de movimiento del cursor en la pantalla. El cursor se moverá automáticamente y rebotará contra los bordes de la pantalla.
 
-## Descripción
+## Características
 
-El script crea una ventana con un botón que al ser presionado activa o desactiva el modo de movimiento automático del cursor. Cuando el modo está activado, el cursor se moverá automáticamente en diagonal por la pantalla. Además, el cursor cambiará de dirección cuando alcance los bordes de la pantalla, imitando el comportamiento del protector de pantalla del logo de DVD.
-
-## Funcionalidades
-
-- Activa/desactiva el modo de movimiento automático del cursor mediante un botón o la combinación de teclas Ctrl + M.
-- El cursor se mueve en diagonal por la pantalla.
-- El cursor rebota contra los bordes de la pantalla para evitar salirse de ella.
-
-## Uso
-
-1. Ejecuta el script `main.py`.
-2. Haz clic en el botón "Activar/Desactivar Modo Cursor Automático" o presiona Ctrl + M para activar/desactivar el modo de movimiento automático del cursor.
+- Activar/desactivar el modo automático de movimiento del cursor.
+- Ajustar la velocidad de movimiento del cursor.
+- Cambiar entre el modo oscuro y claro de la interfaz de usuario.
+- Indicadores visuales de la velocidad del cursor y las coordenadas actuales del cursor.
 
 ## Requisitos
 
 - Python 3.x
 - PyQt5
-- pyautogui
+- PyAutoGUI
 
-## Instalación
+## Uso
 
-1. Clona el repositorio:
+1. Ejecuta el script `main.py` para iniciar la aplicación o ejecuta el archivo ejecutable main.exe que se encuentra en la carpeta dist
+2. Activa el modo automático de movimiento del cursor presionando Ctrl + M.
+3. Ajusta la velocidad del cursor con las teclas de flecha arriba y abajo.
+4. Cambia entre el modo oscuro y claro de la interfaz presionando Ctrl + T.
 
-git clone https://github.com/tu_usuario/automatic-cursor.git
+## Contribuir
 
-2. Instala las dependencias:
-
-pip install PyQt5 pyautogui
-
-## Ejecución
-
-python main.py
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas contribuir al proyecto, sigue estos pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama (`git checkout -b feature/nueva-caracteristica`).
-3. Realiza tus cambios y haz commits (`git commit -am 'Agrega nueva característica'`).
-4. Sube tus cambios (`git push origin feature/nueva-caracteristica`).
-5. Abre una solicitud de extracción en GitHub.
+¡Si quieres contribuir a este proyecto, eres bienvenido! Puedes enviar pull requests con nuevas características, mejoras en el código o correcciones de errores.
 
 ## Licencia
 
-Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
+Este proyecto está bajo la licencia [MIT](LICENSE).
